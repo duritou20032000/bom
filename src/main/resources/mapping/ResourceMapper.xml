@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Resource" >
+    <id column="resource_id" property="resourceId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="subject_group_id" property="subjectGroupId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="resurl" property="resurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resource_id, name, subject_group_id, type, resurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bom_resource
+    where resource_id = #{resourceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bom_resource
+    where resource_id = #{resourceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Resource" >
+    insert into bom_resource (resource_id, name, subject_group_id, 
+      type, resurl)
+    values (#{resourceId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{subjectGroupId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{resurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Resource" >
+    insert into bom_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="subjectGroupId != null" >
+        subject_group_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="resurl != null" >
+        resurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectGroupId != null" >
+        #{subjectGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="resurl != null" >
+        #{resurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Resource" >
+    update bom_resource
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectGroupId != null" >
+        subject_group_id = #{subjectGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="resurl != null" >
+        resurl = #{resurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Resource" >
+    update bom_resource
+    set name = #{name,jdbcType=VARCHAR},
+      subject_group_id = #{subjectGroupId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      resurl = #{resurl,jdbcType=VARCHAR}
+    where resource_id = #{resourceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

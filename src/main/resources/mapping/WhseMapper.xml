@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.WhseMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Whse" >
+    <id column="whse_id" property="whseId" jdbcType="VARCHAR" />
+    <result column="mem_id" property="memId" jdbcType="VARCHAR" />
+    <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
+    <result column="whse_code" property="whseCode" jdbcType="VARCHAR" />
+    <result column="whse_name" property="whseName" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="whse_area" property="whseArea" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="cntry" property="cntry" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="cainiao_whse_code" property="cainiaoWhseCode" jdbcType="VARCHAR" />
+    <result column="netease_whse_code" property="neteaseWhseCode" jdbcType="VARCHAR" />
+    <result column="multi_ctn_check_code" property="multiCtnCheckCode" jdbcType="VARCHAR" />
+    <result column="flow_line_flag" property="flowLineFlag" jdbcType="INTEGER" />
+    <result column="auto_weight_flag" property="autoWeightFlag" jdbcType="INTEGER" />
+    <result column="crossboard_flag" property="crossboardFlag" jdbcType="INTEGER" />
+    <result column="standard_express_format" property="standardExpressFormat" jdbcType="INTEGER" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="whse_type" property="whseType" jdbcType="INTEGER" />
+    <result column="truck_type" property="truckType" jdbcType="INTEGER" />
+    <result column="test_carr_code" property="testCarrCode" jdbcType="VARCHAR" />
+    <result column="test_carr_id" property="testCarrId" jdbcType="VARCHAR" />
+    <result column="creation_date" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="weight_model" property="weightModel" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="tax_nbr" property="taxNbr" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="sender" property="sender" jdbcType="VARCHAR" />
+    <result column="sender_tel" property="senderTel" jdbcType="VARCHAR" />
+    <result column="sender_addr" property="senderAddr" jdbcType="VARCHAR" />
+    <result column="average_operation_time" property="averageOperationTime" jdbcType="DOUBLE" />
+    <result column="pickcart_mg_flag" property="pickcartMgFlag" jdbcType="INTEGER" />
+    <result column="ctnNbr_check_flag" property="ctnnbrCheckFlag" jdbcType="INTEGER" />
+    <result column="regx_prefix" property="regxPrefix" jdbcType="VARCHAR" />
+    <result column="regx_charlength" property="regxCharlength" jdbcType="INTEGER" />
+    <result column="stagnate_time" property="stagnateTime" jdbcType="INTEGER" />
+    <result column="recycle_period" property="recyclePeriod" jdbcType="INTEGER" />
+    <result column="max_do_bulk_wave" property="maxDoBulkWave" jdbcType="INTEGER" />
+    <result column="pre_get_tracknbr_flag" property="preGetTracknbrFlag" jdbcType="INTEGER" />
+    <result column="recv_lpn_bind_counter_flag" property="recvLpnBindCounterFlag" jdbcType="INTEGER" />
+    <result column="efficiency_flag" property="efficiencyFlag" jdbcType="INTEGER" />
+    <result column="one_locn_multi_sku_flag" property="oneLocnMultiSkuFlag" jdbcType="INTEGER" />
+    <result column="multi_channel_mixing_sku_flag" property="multiChannelMixingSkuFlag" jdbcType="INTEGER" />
+    <result column="send_manifest_rule_cfg" property="sendManifestRuleCfg" jdbcType="INTEGER" />
+    <result column="rollback_auto_packed_cfg" property="rollbackAutoPackedCfg" jdbcType="INTEGER" />
+    <result column="collect_packnbr_mge_cfg" property="collectPacknbrMgeCfg" jdbcType="INTEGER" />
+    <result column="scan_pack_load_part" property="scanPackLoadPart" jdbcType="INTEGER" />
+    <result column="stocktake_cc_multiple_cfg" property="stocktakeCcMultipleCfg" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    whse_id, mem_id, mem_code, whse_code, whse_name, level, parent_id, whse_area, city, 
+    state, cntry, addr, cainiao_whse_code, netease_whse_code, multi_ctn_check_code, flow_line_flag, 
+    auto_weight_flag, crossboard_flag, standard_express_format, zip, tel, contact, fax, 
+    whse_type, truck_type, test_carr_code, test_carr_id, creation_date, last_modify_date, 
+    creator, modified_by, status, weight_model, company, tax_nbr, bank_name, bank_account, 
+    sender, sender_tel, sender_addr, average_operation_time, pickcart_mg_flag, ctnNbr_check_flag, 
+    regx_prefix, regx_charlength, stagnate_time, recycle_period, max_do_bulk_wave, pre_get_tracknbr_flag, 
+    recv_lpn_bind_counter_flag, efficiency_flag, one_locn_multi_sku_flag, multi_channel_mixing_sku_flag, 
+    send_manifest_rule_cfg, rollback_auto_packed_cfg, collect_packnbr_mge_cfg, scan_pack_load_part, 
+    stocktake_cc_multiple_cfg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wms_whse_master
+    where whse_id = #{whseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wms_whse_master
+    where whse_id = #{whseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Whse" >
+    insert into wms_whse_master (whse_id, mem_id, mem_code, 
+      whse_code, whse_name, level, 
+      parent_id, whse_area, city, 
+      state, cntry, addr, 
+      cainiao_whse_code, netease_whse_code, multi_ctn_check_code, 
+      flow_line_flag, auto_weight_flag, crossboard_flag, 
+      standard_express_format, zip, tel, 
+      contact, fax, whse_type, 
+      truck_type, test_carr_code, test_carr_id, 
+      creation_date, last_modify_date, creator, 
+      modified_by, status, weight_model, 
+      company, tax_nbr, bank_name, 
+      bank_account, sender, sender_tel, 
+      sender_addr, average_operation_time, pickcart_mg_flag, 
+      ctnNbr_check_flag, regx_prefix, regx_charlength, 
+      stagnate_time, recycle_period, max_do_bulk_wave, 
+      pre_get_tracknbr_flag, recv_lpn_bind_counter_flag, 
+      efficiency_flag, one_locn_multi_sku_flag, multi_channel_mixing_sku_flag, 
+      send_manifest_rule_cfg, rollback_auto_packed_cfg, 
+      collect_packnbr_mge_cfg, scan_pack_load_part, 
+      stocktake_cc_multiple_cfg)
+    values (#{whseId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{whseCode,jdbcType=VARCHAR}, #{whseName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=VARCHAR}, #{whseArea,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{cntry,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{cainiaoWhseCode,jdbcType=VARCHAR}, #{neteaseWhseCode,jdbcType=VARCHAR}, #{multiCtnCheckCode,jdbcType=VARCHAR}, 
+      #{flowLineFlag,jdbcType=INTEGER}, #{autoWeightFlag,jdbcType=INTEGER}, #{crossboardFlag,jdbcType=INTEGER}, 
+      #{standardExpressFormat,jdbcType=INTEGER}, #{zip,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{whseType,jdbcType=INTEGER}, 
+      #{truckType,jdbcType=INTEGER}, #{testCarrCode,jdbcType=VARCHAR}, #{testCarrId,jdbcType=VARCHAR}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
+      #{modifiedBy,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{weightModel,jdbcType=INTEGER}, 
+      #{company,jdbcType=VARCHAR}, #{taxNbr,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankAccount,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR}, #{senderTel,jdbcType=VARCHAR}, 
+      #{senderAddr,jdbcType=VARCHAR}, #{averageOperationTime,jdbcType=DOUBLE}, #{pickcartMgFlag,jdbcType=INTEGER}, 
+      #{ctnnbrCheckFlag,jdbcType=INTEGER}, #{regxPrefix,jdbcType=VARCHAR}, #{regxCharlength,jdbcType=INTEGER}, 
+      #{stagnateTime,jdbcType=INTEGER}, #{recyclePeriod,jdbcType=INTEGER}, #{maxDoBulkWave,jdbcType=INTEGER}, 
+      #{preGetTracknbrFlag,jdbcType=INTEGER}, #{recvLpnBindCounterFlag,jdbcType=INTEGER}, 
+      #{efficiencyFlag,jdbcType=INTEGER}, #{oneLocnMultiSkuFlag,jdbcType=INTEGER}, #{multiChannelMixingSkuFlag,jdbcType=INTEGER}, 
+      #{sendManifestRuleCfg,jdbcType=INTEGER}, #{rollbackAutoPackedCfg,jdbcType=INTEGER}, 
+      #{collectPacknbrMgeCfg,jdbcType=INTEGER}, #{scanPackLoadPart,jdbcType=INTEGER}, 
+      #{stocktakeCcMultipleCfg,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Whse" >
+    insert into wms_whse_master
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="whseId != null" >
+        whse_id,
+      </if>
+      <if test="memId != null" >
+        mem_id,
+      </if>
+      <if test="memCode != null" >
+        mem_code,
+      </if>
+      <if test="whseCode != null" >
+        whse_code,
+      </if>
+      <if test="whseName != null" >
+        whse_name,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="whseArea != null" >
+        whse_area,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="cntry != null" >
+        cntry,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="cainiaoWhseCode != null" >
+        cainiao_whse_code,
+      </if>
+      <if test="neteaseWhseCode != null" >
+        netease_whse_code,
+      </if>
+      <if test="multiCtnCheckCode != null" >
+        multi_ctn_check_code,
+      </if>
+      <if test="flowLineFlag != null" >
+        flow_line_flag,
+      </if>
+      <if test="autoWeightFlag != null" >
+        auto_weight_flag,
+      </if>
+      <if test="crossboardFlag != null" >
+        crossboard_flag,
+      </if>
+      <if test="standardExpressFormat != null" >
+        standard_express_format,
+      </if>
+      <if test="zip != null" >
+        zip,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="whseType != null" >
+        whse_type,
+      </if>
+      <if test="truckType != null" >
+        truck_type,
+      </if>
+      <if test="testCarrCode != null" >
+        test_carr_code,
+      </if>
+      <if test="testCarrId != null" >
+        test_carr_id,
+      </if>
+      <if test="creationDate != null" >
+        creation_date,
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="weightModel != null" >
+        weight_model,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="taxNbr != null" >
+        tax_nbr,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankAccount != null" >
+        bank_account,
+      </if>
+      <if test="sender != null" >
+        sender,
+      </if>
+      <if test="senderTel != null" >
+        sender_tel,
+      </if>
+      <if test="senderAddr != null" >
+        sender_addr,
+      </if>
+      <if test="averageOperationTime != null" >
+        average_operation_time,
+      </if>
+      <if test="pickcartMgFlag != null" >
+        pickcart_mg_flag,
+      </if>
+      <if test="ctnnbrCheckFlag != null" >
+        ctnNbr_check_flag,
+      </if>
+      <if test="regxPrefix != null" >
+        regx_prefix,
+      </if>
+      <if test="regxCharlength != null" >
+        regx_charlength,
+      </if>
+      <if test="stagnateTime != null" >
+        stagnate_time,
+      </if>
+      <if test="recyclePeriod != null" >
+        recycle_period,
+      </if>
+      <if test="maxDoBulkWave != null" >
+        max_do_bulk_wave,
+      </if>
+      <if test="preGetTracknbrFlag != null" >
+        pre_get_tracknbr_flag,
+      </if>
+      <if test="recvLpnBindCounterFlag != null" >
+        recv_lpn_bind_counter_flag,
+      </if>
+      <if test="efficiencyFlag != null" >
+        efficiency_flag,
+      </if>
+      <if test="oneLocnMultiSkuFlag != null" >
+        one_locn_multi_sku_flag,
+      </if>
+      <if test="multiChannelMixingSkuFlag != null" >
+        multi_channel_mixing_sku_flag,
+      </if>
+      <if test="sendManifestRuleCfg != null" >
+        send_manifest_rule_cfg,
+      </if>
+      <if test="rollbackAutoPackedCfg != null" >
+        rollback_auto_packed_cfg,
+      </if>
+      <if test="collectPacknbrMgeCfg != null" >
+        collect_packnbr_mge_cfg,
+      </if>
+      <if test="scanPackLoadPart != null" >
+        scan_pack_load_part,
+      </if>
+      <if test="stocktakeCcMultipleCfg != null" >
+        stocktake_cc_multiple_cfg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="whseId != null" >
+        #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="memId != null" >
+        #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseName != null" >
+        #{whseName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseArea != null" >
+        #{whseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="cntry != null" >
+        #{cntry,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="cainiaoWhseCode != null" >
+        #{cainiaoWhseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="neteaseWhseCode != null" >
+        #{neteaseWhseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="multiCtnCheckCode != null" >
+        #{multiCtnCheckCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flowLineFlag != null" >
+        #{flowLineFlag,jdbcType=INTEGER},
+      </if>
+      <if test="autoWeightFlag != null" >
+        #{autoWeightFlag,jdbcType=INTEGER},
+      </if>
+      <if test="crossboardFlag != null" >
+        #{crossboardFlag,jdbcType=INTEGER},
+      </if>
+      <if test="standardExpressFormat != null" >
+        #{standardExpressFormat,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="whseType != null" >
+        #{whseType,jdbcType=INTEGER},
+      </if>
+      <if test="truckType != null" >
+        #{truckType,jdbcType=INTEGER},
+      </if>
+      <if test="testCarrCode != null" >
+        #{testCarrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="testCarrId != null" >
+        #{testCarrId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="weightModel != null" >
+        #{weightModel,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNbr != null" >
+        #{taxNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="senderTel != null" >
+        #{senderTel,jdbcType=VARCHAR},
+      </if>
+      <if test="senderAddr != null" >
+        #{senderAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="averageOperationTime != null" >
+        #{averageOperationTime,jdbcType=DOUBLE},
+      </if>
+      <if test="pickcartMgFlag != null" >
+        #{pickcartMgFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ctnnbrCheckFlag != null" >
+        #{ctnnbrCheckFlag,jdbcType=INTEGER},
+      </if>
+      <if test="regxPrefix != null" >
+        #{regxPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="regxCharlength != null" >
+        #{regxCharlength,jdbcType=INTEGER},
+      </if>
+      <if test="stagnateTime != null" >
+        #{stagnateTime,jdbcType=INTEGER},
+      </if>
+      <if test="recyclePeriod != null" >
+        #{recyclePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="maxDoBulkWave != null" >
+        #{maxDoBulkWave,jdbcType=INTEGER},
+      </if>
+      <if test="preGetTracknbrFlag != null" >
+        #{preGetTracknbrFlag,jdbcType=INTEGER},
+      </if>
+      <if test="recvLpnBindCounterFlag != null" >
+        #{recvLpnBindCounterFlag,jdbcType=INTEGER},
+      </if>
+      <if test="efficiencyFlag != null" >
+        #{efficiencyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="oneLocnMultiSkuFlag != null" >
+        #{oneLocnMultiSkuFlag,jdbcType=INTEGER},
+      </if>
+      <if test="multiChannelMixingSkuFlag != null" >
+        #{multiChannelMixingSkuFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sendManifestRuleCfg != null" >
+        #{sendManifestRuleCfg,jdbcType=INTEGER},
+      </if>
+      <if test="rollbackAutoPackedCfg != null" >
+        #{rollbackAutoPackedCfg,jdbcType=INTEGER},
+      </if>
+      <if test="collectPacknbrMgeCfg != null" >
+        #{collectPacknbrMgeCfg,jdbcType=INTEGER},
+      </if>
+      <if test="scanPackLoadPart != null" >
+        #{scanPackLoadPart,jdbcType=INTEGER},
+      </if>
+      <if test="stocktakeCcMultipleCfg != null" >
+        #{stocktakeCcMultipleCfg,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Whse" >
+    update wms_whse_master
+    <set >
+      <if test="memId != null" >
+        mem_id = #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        whse_code = #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseName != null" >
+        whse_name = #{whseName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseArea != null" >
+        whse_area = #{whseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="cntry != null" >
+        cntry = #{cntry,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="cainiaoWhseCode != null" >
+        cainiao_whse_code = #{cainiaoWhseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="neteaseWhseCode != null" >
+        netease_whse_code = #{neteaseWhseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="multiCtnCheckCode != null" >
+        multi_ctn_check_code = #{multiCtnCheckCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flowLineFlag != null" >
+        flow_line_flag = #{flowLineFlag,jdbcType=INTEGER},
+      </if>
+      <if test="autoWeightFlag != null" >
+        auto_weight_flag = #{autoWeightFlag,jdbcType=INTEGER},
+      </if>
+      <if test="crossboardFlag != null" >
+        crossboard_flag = #{crossboardFlag,jdbcType=INTEGER},
+      </if>
+      <if test="standardExpressFormat != null" >
+        standard_express_format = #{standardExpressFormat,jdbcType=INTEGER},
+      </if>
+      <if test="zip != null" >
+        zip = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="whseType != null" >
+        whse_type = #{whseType,jdbcType=INTEGER},
+      </if>
+      <if test="truckType != null" >
+        truck_type = #{truckType,jdbcType=INTEGER},
+      </if>
+      <if test="testCarrCode != null" >
+        test_carr_code = #{testCarrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="testCarrId != null" >
+        test_carr_id = #{testCarrId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="weightModel != null" >
+        weight_model = #{weightModel,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNbr != null" >
+        tax_nbr = #{taxNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        sender = #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="senderTel != null" >
+        sender_tel = #{senderTel,jdbcType=VARCHAR},
+      </if>
+      <if test="senderAddr != null" >
+        sender_addr = #{senderAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="averageOperationTime != null" >
+        average_operation_time = #{averageOperationTime,jdbcType=DOUBLE},
+      </if>
+      <if test="pickcartMgFlag != null" >
+        pickcart_mg_flag = #{pickcartMgFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ctnnbrCheckFlag != null" >
+        ctnNbr_check_flag = #{ctnnbrCheckFlag,jdbcType=INTEGER},
+      </if>
+      <if test="regxPrefix != null" >
+        regx_prefix = #{regxPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="regxCharlength != null" >
+        regx_charlength = #{regxCharlength,jdbcType=INTEGER},
+      </if>
+      <if test="stagnateTime != null" >
+        stagnate_time = #{stagnateTime,jdbcType=INTEGER},
+      </if>
+      <if test="recyclePeriod != null" >
+        recycle_period = #{recyclePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="maxDoBulkWave != null" >
+        max_do_bulk_wave = #{maxDoBulkWave,jdbcType=INTEGER},
+      </if>
+      <if test="preGetTracknbrFlag != null" >
+        pre_get_tracknbr_flag = #{preGetTracknbrFlag,jdbcType=INTEGER},
+      </if>
+      <if test="recvLpnBindCounterFlag != null" >
+        recv_lpn_bind_counter_flag = #{recvLpnBindCounterFlag,jdbcType=INTEGER},
+      </if>
+      <if test="efficiencyFlag != null" >
+        efficiency_flag = #{efficiencyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="oneLocnMultiSkuFlag != null" >
+        one_locn_multi_sku_flag = #{oneLocnMultiSkuFlag,jdbcType=INTEGER},
+      </if>
+      <if test="multiChannelMixingSkuFlag != null" >
+        multi_channel_mixing_sku_flag = #{multiChannelMixingSkuFlag,jdbcType=INTEGER},
+      </if>
+      <if test="sendManifestRuleCfg != null" >
+        send_manifest_rule_cfg = #{sendManifestRuleCfg,jdbcType=INTEGER},
+      </if>
+      <if test="rollbackAutoPackedCfg != null" >
+        rollback_auto_packed_cfg = #{rollbackAutoPackedCfg,jdbcType=INTEGER},
+      </if>
+      <if test="collectPacknbrMgeCfg != null" >
+        collect_packnbr_mge_cfg = #{collectPacknbrMgeCfg,jdbcType=INTEGER},
+      </if>
+      <if test="scanPackLoadPart != null" >
+        scan_pack_load_part = #{scanPackLoadPart,jdbcType=INTEGER},
+      </if>
+      <if test="stocktakeCcMultipleCfg != null" >
+        stocktake_cc_multiple_cfg = #{stocktakeCcMultipleCfg,jdbcType=INTEGER},
+      </if>
+    </set>
+    where whse_id = #{whseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Whse" >
+    update wms_whse_master
+    set mem_id = #{memId,jdbcType=VARCHAR},
+      mem_code = #{memCode,jdbcType=VARCHAR},
+      whse_code = #{whseCode,jdbcType=VARCHAR},
+      whse_name = #{whseName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      whse_area = #{whseArea,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      cntry = #{cntry,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      cainiao_whse_code = #{cainiaoWhseCode,jdbcType=VARCHAR},
+      netease_whse_code = #{neteaseWhseCode,jdbcType=VARCHAR},
+      multi_ctn_check_code = #{multiCtnCheckCode,jdbcType=VARCHAR},
+      flow_line_flag = #{flowLineFlag,jdbcType=INTEGER},
+      auto_weight_flag = #{autoWeightFlag,jdbcType=INTEGER},
+      crossboard_flag = #{crossboardFlag,jdbcType=INTEGER},
+      standard_express_format = #{standardExpressFormat,jdbcType=INTEGER},
+      zip = #{zip,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      whse_type = #{whseType,jdbcType=INTEGER},
+      truck_type = #{truckType,jdbcType=INTEGER},
+      test_carr_code = #{testCarrCode,jdbcType=VARCHAR},
+      test_carr_id = #{testCarrId,jdbcType=VARCHAR},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      weight_model = #{weightModel,jdbcType=INTEGER},
+      company = #{company,jdbcType=VARCHAR},
+      tax_nbr = #{taxNbr,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      sender = #{sender,jdbcType=VARCHAR},
+      sender_tel = #{senderTel,jdbcType=VARCHAR},
+      sender_addr = #{senderAddr,jdbcType=VARCHAR},
+      average_operation_time = #{averageOperationTime,jdbcType=DOUBLE},
+      pickcart_mg_flag = #{pickcartMgFlag,jdbcType=INTEGER},
+      ctnNbr_check_flag = #{ctnnbrCheckFlag,jdbcType=INTEGER},
+      regx_prefix = #{regxPrefix,jdbcType=VARCHAR},
+      regx_charlength = #{regxCharlength,jdbcType=INTEGER},
+      stagnate_time = #{stagnateTime,jdbcType=INTEGER},
+      recycle_period = #{recyclePeriod,jdbcType=INTEGER},
+      max_do_bulk_wave = #{maxDoBulkWave,jdbcType=INTEGER},
+      pre_get_tracknbr_flag = #{preGetTracknbrFlag,jdbcType=INTEGER},
+      recv_lpn_bind_counter_flag = #{recvLpnBindCounterFlag,jdbcType=INTEGER},
+      efficiency_flag = #{efficiencyFlag,jdbcType=INTEGER},
+      one_locn_multi_sku_flag = #{oneLocnMultiSkuFlag,jdbcType=INTEGER},
+      multi_channel_mixing_sku_flag = #{multiChannelMixingSkuFlag,jdbcType=INTEGER},
+      send_manifest_rule_cfg = #{sendManifestRuleCfg,jdbcType=INTEGER},
+      rollback_auto_packed_cfg = #{rollbackAutoPackedCfg,jdbcType=INTEGER},
+      collect_packnbr_mge_cfg = #{collectPacknbrMgeCfg,jdbcType=INTEGER},
+      scan_pack_load_part = #{scanPackLoadPart,jdbcType=INTEGER},
+      stocktake_cc_multiple_cfg = #{stocktakeCcMultipleCfg,jdbcType=INTEGER}
+    where whse_id = #{whseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

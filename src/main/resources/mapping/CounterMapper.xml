@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.CounterMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Counter" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="counter_status" property="counterStatus" jdbcType="VARCHAR" />
+    <result column="counter_code" property="counterCode" jdbcType="VARCHAR" />
+    <result column="counter_name" property="counterName" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="creation_date" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="last_modify_name" property="lastModifyName" jdbcType="VARCHAR" />
+    <result column="whse_code" property="whseCode" jdbcType="VARCHAR" />
+    <result column="whse_name" property="whseName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, counter_status, counter_code, counter_name, creater, creation_date, description, 
+    last_modify_date, last_modify_name, whse_code, whse_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bom_counter
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bom_counter
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Counter" >
+    insert into bom_counter (id, counter_status, counter_code, 
+      counter_name, creater, creation_date, 
+      description, last_modify_date, last_modify_name, 
+      whse_code, whse_name)
+    values (#{id,jdbcType=BIGINT}, #{counterStatus,jdbcType=VARCHAR}, #{counterCode,jdbcType=VARCHAR}, 
+      #{counterName,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR}, #{lastModifyDate,jdbcType=TIMESTAMP}, #{lastModifyName,jdbcType=VARCHAR}, 
+      #{whseCode,jdbcType=VARCHAR}, #{whseName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Counter" >
+    insert into bom_counter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="counterStatus != null" >
+        counter_status,
+      </if>
+      <if test="counterCode != null" >
+        counter_code,
+      </if>
+      <if test="counterName != null" >
+        counter_name,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="creationDate != null" >
+        creation_date,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date,
+      </if>
+      <if test="lastModifyName != null" >
+        last_modify_name,
+      </if>
+      <if test="whseCode != null" >
+        whse_code,
+      </if>
+      <if test="whseName != null" >
+        whse_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="counterStatus != null" >
+        #{counterStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="counterCode != null" >
+        #{counterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="counterName != null" >
+        #{counterName,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyName != null" >
+        #{lastModifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseName != null" >
+        #{whseName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Counter" >
+    update bom_counter
+    <set >
+      <if test="counterStatus != null" >
+        counter_status = #{counterStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="counterCode != null" >
+        counter_code = #{counterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="counterName != null" >
+        counter_name = #{counterName,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyName != null" >
+        last_modify_name = #{lastModifyName,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        whse_code = #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="whseName != null" >
+        whse_name = #{whseName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Counter" >
+    update bom_counter
+    set counter_status = #{counterStatus,jdbcType=VARCHAR},
+      counter_code = #{counterCode,jdbcType=VARCHAR},
+      counter_name = #{counterName,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      last_modify_name = #{lastModifyName,jdbcType=VARCHAR},
+      whse_code = #{whseCode,jdbcType=VARCHAR},
+      whse_name = #{whseName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

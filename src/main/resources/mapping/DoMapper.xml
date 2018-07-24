@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.DoMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Do" >
+    <id column="do_dtl_id" property="doDtlId" jdbcType="VARCHAR" />
+    <result column="mem_id" property="memId" jdbcType="VARCHAR" />
+    <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
+    <result column="do_id" property="doId" jdbcType="VARCHAR" />
+    <result column="do_nbr" property="doNbr" jdbcType="VARCHAR" />
+    <result column="do_seq_nbr" property="doSeqNbr" jdbcType="INTEGER" />
+    <result column="own_client_id" property="ownClientId" jdbcType="VARCHAR" />
+    <result column="own_client_nbr" property="ownClientNbr" jdbcType="VARCHAR" />
+    <result column="distributor_client_id" property="distributorClientId" jdbcType="VARCHAR" />
+    <result column="distributor_client_nbr" property="distributorClientNbr" jdbcType="VARCHAR" />
+    <result column="distributor_id" property="distributorId" jdbcType="VARCHAR" />
+    <result column="org_flag" property="orgFlag" jdbcType="INTEGER" />
+    <result column="ord_qty" property="ordQty" jdbcType="DOUBLE" />
+    <result column="pre_pick_qty" property="prePickQty" jdbcType="DOUBLE" />
+    <result column="pick_qty" property="pickQty" jdbcType="DOUBLE" />
+    <result column="pick_balance" property="pickBalance" jdbcType="DOUBLE" />
+    <result column="checked_qty" property="checkedQty" jdbcType="DOUBLE" />
+    <result column="pack_qty" property="packQty" jdbcType="DOUBLE" />
+    <result column="picked_ord_qty" property="pickedOrdQty" jdbcType="DOUBLE" />
+    <result column="picked_pick_qty" property="pickedPickQty" jdbcType="DOUBLE" />
+    <result column="whse_id" property="whseId" jdbcType="VARCHAR" />
+    <result column="whse_code" property="whseCode" jdbcType="VARCHAR" />
+    <result column="pick_locn_dtl_id" property="pickLocnDtlId" jdbcType="VARCHAR" />
+    <result column="sku_id" property="skuId" jdbcType="VARCHAR" />
+    <result column="sku_code" property="skuCode" jdbcType="VARCHAR" />
+    <result column="vdr_code" property="vdrCode" jdbcType="VARCHAR" />
+    <result column="sku_name" property="skuName" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="DOUBLE" />
+    <result column="cost_no_tax" property="costNoTax" jdbcType="DOUBLE" />
+    <result column="creation_date" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="batch_nbr" property="batchNbr" jdbcType="VARCHAR" />
+    <result column="serial_nbr" property="serialNbr" jdbcType="VARCHAR" />
+    <result column="xpire_date" property="xpireDate" jdbcType="TIMESTAMP" />
+    <result column="inventory_type" property="inventoryType" jdbcType="INTEGER" />
+    <result column="crossborder_import_tax_no" property="crossborderImportTaxNo" jdbcType="VARCHAR" />
+    <result column="crossborder_import_tax_rate" property="crossborderImportTaxRate" jdbcType="DOUBLE" />
+    <result column="product_customs_record" property="productCustomsRecord" jdbcType="VARCHAR" />
+    <result column="postal_tax_no" property="postalTaxNo" jdbcType="VARCHAR" />
+    <result column="postal_tax_rate" property="postalTaxRate" jdbcType="DOUBLE" />
+    <result column="customs_declared_price" property="customsDeclaredPrice" jdbcType="DOUBLE" />
+    <result column="unit_pack" property="unitPack" jdbcType="DOUBLE" />
+    <result column="ref_order" property="refOrder" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    do_dtl_id, mem_id, mem_code, do_id, do_nbr, do_seq_nbr, own_client_id, own_client_nbr, 
+    distributor_client_id, distributor_client_nbr, distributor_id, org_flag, ord_qty, 
+    pre_pick_qty, pick_qty, pick_balance, checked_qty, pack_qty, picked_ord_qty, picked_pick_qty, 
+    whse_id, whse_code, pick_locn_dtl_id, sku_id, sku_code, vdr_code, sku_name, cost, 
+    cost_no_tax, creation_date, last_modify_date, creator, modified_by, status, batch_nbr, 
+    serial_nbr, xpire_date, inventory_type, crossborder_import_tax_no, crossborder_import_tax_rate, 
+    product_customs_record, postal_tax_no, postal_tax_rate, customs_declared_price, unit_pack, 
+    ref_order
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wms_do_dtl
+    where do_dtl_id = #{doDtlId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wms_do_dtl
+    where do_dtl_id = #{doDtlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Do" >
+    insert into wms_do_dtl (do_dtl_id, mem_id, mem_code, 
+      do_id, do_nbr, do_seq_nbr, 
+      own_client_id, own_client_nbr, distributor_client_id, 
+      distributor_client_nbr, distributor_id, org_flag, 
+      ord_qty, pre_pick_qty, pick_qty, 
+      pick_balance, checked_qty, pack_qty, 
+      picked_ord_qty, picked_pick_qty, whse_id, 
+      whse_code, pick_locn_dtl_id, sku_id, 
+      sku_code, vdr_code, sku_name, 
+      cost, cost_no_tax, creation_date, 
+      last_modify_date, creator, modified_by, 
+      status, batch_nbr, serial_nbr, 
+      xpire_date, inventory_type, crossborder_import_tax_no, 
+      crossborder_import_tax_rate, product_customs_record, 
+      postal_tax_no, postal_tax_rate, customs_declared_price, 
+      unit_pack, ref_order)
+    values (#{doDtlId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{doId,jdbcType=VARCHAR}, #{doNbr,jdbcType=VARCHAR}, #{doSeqNbr,jdbcType=INTEGER}, 
+      #{ownClientId,jdbcType=VARCHAR}, #{ownClientNbr,jdbcType=VARCHAR}, #{distributorClientId,jdbcType=VARCHAR}, 
+      #{distributorClientNbr,jdbcType=VARCHAR}, #{distributorId,jdbcType=VARCHAR}, #{orgFlag,jdbcType=INTEGER}, 
+      #{ordQty,jdbcType=DOUBLE}, #{prePickQty,jdbcType=DOUBLE}, #{pickQty,jdbcType=DOUBLE}, 
+      #{pickBalance,jdbcType=DOUBLE}, #{checkedQty,jdbcType=DOUBLE}, #{packQty,jdbcType=DOUBLE}, 
+      #{pickedOrdQty,jdbcType=DOUBLE}, #{pickedPickQty,jdbcType=DOUBLE}, #{whseId,jdbcType=VARCHAR}, 
+      #{whseCode,jdbcType=VARCHAR}, #{pickLocnDtlId,jdbcType=VARCHAR}, #{skuId,jdbcType=VARCHAR}, 
+      #{skuCode,jdbcType=VARCHAR}, #{vdrCode,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=DOUBLE}, #{costNoTax,jdbcType=DOUBLE}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{batchNbr,jdbcType=VARCHAR}, #{serialNbr,jdbcType=VARCHAR}, 
+      #{xpireDate,jdbcType=TIMESTAMP}, #{inventoryType,jdbcType=INTEGER}, #{crossborderImportTaxNo,jdbcType=VARCHAR}, 
+      #{crossborderImportTaxRate,jdbcType=DOUBLE}, #{productCustomsRecord,jdbcType=VARCHAR}, 
+      #{postalTaxNo,jdbcType=VARCHAR}, #{postalTaxRate,jdbcType=DOUBLE}, #{customsDeclaredPrice,jdbcType=DOUBLE}, 
+      #{unitPack,jdbcType=DOUBLE}, #{refOrder,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Do" >
+    insert into wms_do_dtl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="doDtlId != null" >
+        do_dtl_id,
+      </if>
+      <if test="memId != null" >
+        mem_id,
+      </if>
+      <if test="memCode != null" >
+        mem_code,
+      </if>
+      <if test="doId != null" >
+        do_id,
+      </if>
+      <if test="doNbr != null" >
+        do_nbr,
+      </if>
+      <if test="doSeqNbr != null" >
+        do_seq_nbr,
+      </if>
+      <if test="ownClientId != null" >
+        own_client_id,
+      </if>
+      <if test="ownClientNbr != null" >
+        own_client_nbr,
+      </if>
+      <if test="distributorClientId != null" >
+        distributor_client_id,
+      </if>
+      <if test="distributorClientNbr != null" >
+        distributor_client_nbr,
+      </if>
+      <if test="distributorId != null" >
+        distributor_id,
+      </if>
+      <if test="orgFlag != null" >
+        org_flag,
+      </if>
+      <if test="ordQty != null" >
+        ord_qty,
+      </if>
+      <if test="prePickQty != null" >
+        pre_pick_qty,
+      </if>
+      <if test="pickQty != null" >
+        pick_qty,
+      </if>
+      <if test="pickBalance != null" >
+        pick_balance,
+      </if>
+      <if test="checkedQty != null" >
+        checked_qty,
+      </if>
+      <if test="packQty != null" >
+        pack_qty,
+      </if>
+      <if test="pickedOrdQty != null" >
+        picked_ord_qty,
+      </if>
+      <if test="pickedPickQty != null" >
+        picked_pick_qty,
+      </if>
+      <if test="whseId != null" >
+        whse_id,
+      </if>
+      <if test="whseCode != null" >
+        whse_code,
+      </if>
+      <if test="pickLocnDtlId != null" >
+        pick_locn_dtl_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="skuCode != null" >
+        sku_code,
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code,
+      </if>
+      <if test="skuName != null" >
+        sku_name,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="costNoTax != null" >
+        cost_no_tax,
+      </if>
+      <if test="creationDate != null" >
+        creation_date,
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="batchNbr != null" >
+        batch_nbr,
+      </if>
+      <if test="serialNbr != null" >
+        serial_nbr,
+      </if>
+      <if test="xpireDate != null" >
+        xpire_date,
+      </if>
+      <if test="inventoryType != null" >
+        inventory_type,
+      </if>
+      <if test="crossborderImportTaxNo != null" >
+        crossborder_import_tax_no,
+      </if>
+      <if test="crossborderImportTaxRate != null" >
+        crossborder_import_tax_rate,
+      </if>
+      <if test="productCustomsRecord != null" >
+        product_customs_record,
+      </if>
+      <if test="postalTaxNo != null" >
+        postal_tax_no,
+      </if>
+      <if test="postalTaxRate != null" >
+        postal_tax_rate,
+      </if>
+      <if test="customsDeclaredPrice != null" >
+        customs_declared_price,
+      </if>
+      <if test="unitPack != null" >
+        unit_pack,
+      </if>
+      <if test="refOrder != null" >
+        ref_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="doDtlId != null" >
+        #{doDtlId,jdbcType=VARCHAR},
+      </if>
+      <if test="memId != null" >
+        #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doId != null" >
+        #{doId,jdbcType=VARCHAR},
+      </if>
+      <if test="doNbr != null" >
+        #{doNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="doSeqNbr != null" >
+        #{doSeqNbr,jdbcType=INTEGER},
+      </if>
+      <if test="ownClientId != null" >
+        #{ownClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownClientNbr != null" >
+        #{ownClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorClientId != null" >
+        #{distributorClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorClientNbr != null" >
+        #{distributorClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null" >
+        #{distributorId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgFlag != null" >
+        #{orgFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ordQty != null" >
+        #{ordQty,jdbcType=DOUBLE},
+      </if>
+      <if test="prePickQty != null" >
+        #{prePickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickQty != null" >
+        #{pickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickBalance != null" >
+        #{pickBalance,jdbcType=DOUBLE},
+      </if>
+      <if test="checkedQty != null" >
+        #{checkedQty,jdbcType=DOUBLE},
+      </if>
+      <if test="packQty != null" >
+        #{packQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickedOrdQty != null" >
+        #{pickedOrdQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickedPickQty != null" >
+        #{pickedPickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="whseId != null" >
+        #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pickLocnDtlId != null" >
+        #{pickLocnDtlId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null" >
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="costNoTax != null" >
+        #{costNoTax,jdbcType=DOUBLE},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="batchNbr != null" >
+        #{batchNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNbr != null" >
+        #{serialNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xpireDate != null" >
+        #{xpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inventoryType != null" >
+        #{inventoryType,jdbcType=INTEGER},
+      </if>
+      <if test="crossborderImportTaxNo != null" >
+        #{crossborderImportTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crossborderImportTaxRate != null" >
+        #{crossborderImportTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="productCustomsRecord != null" >
+        #{productCustomsRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="postalTaxNo != null" >
+        #{postalTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="postalTaxRate != null" >
+        #{postalTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="customsDeclaredPrice != null" >
+        #{customsDeclaredPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="unitPack != null" >
+        #{unitPack,jdbcType=DOUBLE},
+      </if>
+      <if test="refOrder != null" >
+        #{refOrder,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Do" >
+    update wms_do_dtl
+    <set >
+      <if test="memId != null" >
+        mem_id = #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="doId != null" >
+        do_id = #{doId,jdbcType=VARCHAR},
+      </if>
+      <if test="doNbr != null" >
+        do_nbr = #{doNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="doSeqNbr != null" >
+        do_seq_nbr = #{doSeqNbr,jdbcType=INTEGER},
+      </if>
+      <if test="ownClientId != null" >
+        own_client_id = #{ownClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownClientNbr != null" >
+        own_client_nbr = #{ownClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorClientId != null" >
+        distributor_client_id = #{distributorClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorClientNbr != null" >
+        distributor_client_nbr = #{distributorClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null" >
+        distributor_id = #{distributorId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgFlag != null" >
+        org_flag = #{orgFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ordQty != null" >
+        ord_qty = #{ordQty,jdbcType=DOUBLE},
+      </if>
+      <if test="prePickQty != null" >
+        pre_pick_qty = #{prePickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickQty != null" >
+        pick_qty = #{pickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickBalance != null" >
+        pick_balance = #{pickBalance,jdbcType=DOUBLE},
+      </if>
+      <if test="checkedQty != null" >
+        checked_qty = #{checkedQty,jdbcType=DOUBLE},
+      </if>
+      <if test="packQty != null" >
+        pack_qty = #{packQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickedOrdQty != null" >
+        picked_ord_qty = #{pickedOrdQty,jdbcType=DOUBLE},
+      </if>
+      <if test="pickedPickQty != null" >
+        picked_pick_qty = #{pickedPickQty,jdbcType=DOUBLE},
+      </if>
+      <if test="whseId != null" >
+        whse_id = #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        whse_code = #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pickLocnDtlId != null" >
+        pick_locn_dtl_id = #{pickLocnDtlId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null" >
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="costNoTax != null" >
+        cost_no_tax = #{costNoTax,jdbcType=DOUBLE},
+      </if>
+      <if test="creationDate != null" >
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="batchNbr != null" >
+        batch_nbr = #{batchNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNbr != null" >
+        serial_nbr = #{serialNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xpireDate != null" >
+        xpire_date = #{xpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inventoryType != null" >
+        inventory_type = #{inventoryType,jdbcType=INTEGER},
+      </if>
+      <if test="crossborderImportTaxNo != null" >
+        crossborder_import_tax_no = #{crossborderImportTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crossborderImportTaxRate != null" >
+        crossborder_import_tax_rate = #{crossborderImportTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="productCustomsRecord != null" >
+        product_customs_record = #{productCustomsRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="postalTaxNo != null" >
+        postal_tax_no = #{postalTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="postalTaxRate != null" >
+        postal_tax_rate = #{postalTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="customsDeclaredPrice != null" >
+        customs_declared_price = #{customsDeclaredPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="unitPack != null" >
+        unit_pack = #{unitPack,jdbcType=DOUBLE},
+      </if>
+      <if test="refOrder != null" >
+        ref_order = #{refOrder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where do_dtl_id = #{doDtlId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Do" >
+    update wms_do_dtl
+    set mem_id = #{memId,jdbcType=VARCHAR},
+      mem_code = #{memCode,jdbcType=VARCHAR},
+      do_id = #{doId,jdbcType=VARCHAR},
+      do_nbr = #{doNbr,jdbcType=VARCHAR},
+      do_seq_nbr = #{doSeqNbr,jdbcType=INTEGER},
+      own_client_id = #{ownClientId,jdbcType=VARCHAR},
+      own_client_nbr = #{ownClientNbr,jdbcType=VARCHAR},
+      distributor_client_id = #{distributorClientId,jdbcType=VARCHAR},
+      distributor_client_nbr = #{distributorClientNbr,jdbcType=VARCHAR},
+      distributor_id = #{distributorId,jdbcType=VARCHAR},
+      org_flag = #{orgFlag,jdbcType=INTEGER},
+      ord_qty = #{ordQty,jdbcType=DOUBLE},
+      pre_pick_qty = #{prePickQty,jdbcType=DOUBLE},
+      pick_qty = #{pickQty,jdbcType=DOUBLE},
+      pick_balance = #{pickBalance,jdbcType=DOUBLE},
+      checked_qty = #{checkedQty,jdbcType=DOUBLE},
+      pack_qty = #{packQty,jdbcType=DOUBLE},
+      picked_ord_qty = #{pickedOrdQty,jdbcType=DOUBLE},
+      picked_pick_qty = #{pickedPickQty,jdbcType=DOUBLE},
+      whse_id = #{whseId,jdbcType=VARCHAR},
+      whse_code = #{whseCode,jdbcType=VARCHAR},
+      pick_locn_dtl_id = #{pickLocnDtlId,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=VARCHAR},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DOUBLE},
+      cost_no_tax = #{costNoTax,jdbcType=DOUBLE},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      batch_nbr = #{batchNbr,jdbcType=VARCHAR},
+      serial_nbr = #{serialNbr,jdbcType=VARCHAR},
+      xpire_date = #{xpireDate,jdbcType=TIMESTAMP},
+      inventory_type = #{inventoryType,jdbcType=INTEGER},
+      crossborder_import_tax_no = #{crossborderImportTaxNo,jdbcType=VARCHAR},
+      crossborder_import_tax_rate = #{crossborderImportTaxRate,jdbcType=DOUBLE},
+      product_customs_record = #{productCustomsRecord,jdbcType=VARCHAR},
+      postal_tax_no = #{postalTaxNo,jdbcType=VARCHAR},
+      postal_tax_rate = #{postalTaxRate,jdbcType=DOUBLE},
+      customs_declared_price = #{customsDeclaredPrice,jdbcType=DOUBLE},
+      unit_pack = #{unitPack,jdbcType=DOUBLE},
+      ref_order = #{refOrder,jdbcType=VARCHAR}
+    where do_dtl_id = #{doDtlId,jdbcType=VARCHAR}
+  </update>
+</mapper>

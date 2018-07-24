@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.User" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="mem_id" property="memId" jdbcType="VARCHAR" />
+    <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="PWD" property="pwd" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="WHSE_ID" property="whseId" jdbcType="VARCHAR" />
+    <result column="CREATION_DATE" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="vdr_id" property="vdrId" jdbcType="VARCHAR" />
+    <result column="vdr_name" property="vdrName" jdbcType="VARCHAR" />
+    <result column="vdr_code" property="vdrCode" jdbcType="VARCHAR" />
+    <result column="channel_client_Id" property="channelClientId" jdbcType="VARCHAR" />
+    <result column="channel_clinet_nbr" property="channelClinetNbr" jdbcType="VARCHAR" />
+    <result column="channel_id" property="channelId" jdbcType="VARCHAR" />
+    <result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+    <result column="distributor_id" property="distributorId" jdbcType="VARCHAR" />
+    <result column="distributor_code" property="distributorCode" jdbcType="VARCHAR" />
+    <result column="distributor_name" property="distributorName" jdbcType="VARCHAR" />
+    <result column="curr_loggin_whseid" property="currLogginWhseid" jdbcType="VARCHAR" />
+    <result column="curr_loggin_whsecode" property="currLogginWhsecode" jdbcType="VARCHAR" />
+    <result column="curr_loggin_whsename" property="currLogginWhsename" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="locale" property="locale" jdbcType="VARCHAR" />
+    <result column="last_change_pwd_time" property="lastChangePwdTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, mem_id, mem_code, USER_NAME, user_type, PWD, realname, WHSE_ID, CREATION_DATE, 
+    LAST_MODIFY_DATE, creator, modified_by, status, vdr_id, vdr_name, vdr_code, channel_client_Id, 
+    channel_clinet_nbr, channel_id, channel_name, distributor_id, distributor_code, distributor_name, 
+    curr_loggin_whseid, curr_loggin_whsecode, curr_loggin_whsename, mobile, email, locale, 
+    last_change_pwd_time
+  </sql>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bm_user
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from bm_user
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bm_user
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.User" >
+    insert into bm_user (USER_ID, mem_id, mem_code, 
+      USER_NAME, user_type, PWD, 
+      realname, WHSE_ID, CREATION_DATE, 
+      LAST_MODIFY_DATE, creator, modified_by, 
+      status, vdr_id, vdr_name, 
+      vdr_code, channel_client_Id, channel_clinet_nbr, 
+      channel_id, channel_name, distributor_id, 
+      distributor_code, distributor_name, curr_loggin_whseid, 
+      curr_loggin_whsecode, curr_loggin_whsename, 
+      mobile, email, locale, 
+      last_change_pwd_time)
+    values (#{userId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{pwd,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{whseId,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{vdrId,jdbcType=VARCHAR}, #{vdrName,jdbcType=VARCHAR}, 
+      #{vdrCode,jdbcType=VARCHAR}, #{channelClientId,jdbcType=VARCHAR}, #{channelClinetNbr,jdbcType=VARCHAR}, 
+      #{channelId,jdbcType=VARCHAR}, #{channelName,jdbcType=VARCHAR}, #{distributorId,jdbcType=VARCHAR}, 
+      #{distributorCode,jdbcType=VARCHAR}, #{distributorName,jdbcType=VARCHAR}, #{currLogginWhseid,jdbcType=VARCHAR}, 
+      #{currLogginWhsecode,jdbcType=VARCHAR}, #{currLogginWhsename,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{locale,jdbcType=VARCHAR}, 
+      #{lastChangePwdTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.User" >
+    insert into bm_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="memId != null" >
+        mem_id,
+      </if>
+      <if test="memCode != null" >
+        mem_code,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="pwd != null" >
+        PWD,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="whseId != null" >
+        WHSE_ID,
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE,
+      </if>
+      <if test="lastModifyDate != null" >
+        LAST_MODIFY_DATE,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="vdrId != null" >
+        vdr_id,
+      </if>
+      <if test="vdrName != null" >
+        vdr_name,
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code,
+      </if>
+      <if test="channelClientId != null" >
+        channel_client_Id,
+      </if>
+      <if test="channelClinetNbr != null" >
+        channel_clinet_nbr,
+      </if>
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="channelName != null" >
+        channel_name,
+      </if>
+      <if test="distributorId != null" >
+        distributor_id,
+      </if>
+      <if test="distributorCode != null" >
+        distributor_code,
+      </if>
+      <if test="distributorName != null" >
+        distributor_name,
+      </if>
+      <if test="currLogginWhseid != null" >
+        curr_loggin_whseid,
+      </if>
+      <if test="currLogginWhsecode != null" >
+        curr_loggin_whsecode,
+      </if>
+      <if test="currLogginWhsename != null" >
+        curr_loggin_whsename,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="locale != null" >
+        locale,
+      </if>
+      <if test="lastChangePwdTime != null" >
+        last_change_pwd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="memId != null" >
+        #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="whseId != null" >
+        #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="vdrId != null" >
+        #{vdrId,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrName != null" >
+        #{vdrName,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClientId != null" >
+        #{channelClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClinetNbr != null" >
+        #{channelClinetNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelName != null" >
+        #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null" >
+        #{distributorId,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorCode != null" >
+        #{distributorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorName != null" >
+        #{distributorName,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhseid != null" >
+        #{currLogginWhseid,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhsecode != null" >
+        #{currLogginWhsecode,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhsename != null" >
+        #{currLogginWhsename,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="locale != null" >
+        #{locale,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChangePwdTime != null" >
+        #{lastChangePwdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.User" >
+    update bm_user
+    <set >
+      <if test="memId != null" >
+        mem_id = #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="pwd != null" >
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="whseId != null" >
+        WHSE_ID = #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="vdrId != null" >
+        vdr_id = #{vdrId,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrName != null" >
+        vdr_name = #{vdrName,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClientId != null" >
+        channel_client_Id = #{channelClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClinetNbr != null" >
+        channel_clinet_nbr = #{channelClinetNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelName != null" >
+        channel_name = #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorId != null" >
+        distributor_id = #{distributorId,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorCode != null" >
+        distributor_code = #{distributorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorName != null" >
+        distributor_name = #{distributorName,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhseid != null" >
+        curr_loggin_whseid = #{currLogginWhseid,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhsecode != null" >
+        curr_loggin_whsecode = #{currLogginWhsecode,jdbcType=VARCHAR},
+      </if>
+      <if test="currLogginWhsename != null" >
+        curr_loggin_whsename = #{currLogginWhsename,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="locale != null" >
+        locale = #{locale,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChangePwdTime != null" >
+        last_change_pwd_time = #{lastChangePwdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.User" >
+    update bm_user
+    set mem_id = #{memId,jdbcType=VARCHAR},
+      mem_code = #{memCode,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      WHSE_ID = #{whseId,jdbcType=VARCHAR},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      vdr_id = #{vdrId,jdbcType=VARCHAR},
+      vdr_name = #{vdrName,jdbcType=VARCHAR},
+      vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      channel_client_Id = #{channelClientId,jdbcType=VARCHAR},
+      channel_clinet_nbr = #{channelClinetNbr,jdbcType=VARCHAR},
+      channel_id = #{channelId,jdbcType=VARCHAR},
+      channel_name = #{channelName,jdbcType=VARCHAR},
+      distributor_id = #{distributorId,jdbcType=VARCHAR},
+      distributor_code = #{distributorCode,jdbcType=VARCHAR},
+      distributor_name = #{distributorName,jdbcType=VARCHAR},
+      curr_loggin_whseid = #{currLogginWhseid,jdbcType=VARCHAR},
+      curr_loggin_whsecode = #{currLogginWhsecode,jdbcType=VARCHAR},
+      curr_loggin_whsename = #{currLogginWhsename,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      locale = #{locale,jdbcType=VARCHAR},
+      last_change_pwd_time = #{lastChangePwdTime,jdbcType=TIMESTAMP}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

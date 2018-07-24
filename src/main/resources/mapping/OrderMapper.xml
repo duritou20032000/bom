@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Order" >
+    <id column="workorder_id" property="workorderId" jdbcType="VARCHAR" />
+    <result column="mem_id" property="memId" jdbcType="VARCHAR" />
+    <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
+    <result column="workorder_code" property="workorderCode" jdbcType="VARCHAR" />
+    <result column="workorder_type" property="workorderType" jdbcType="INTEGER" />
+    <result column="pre_qty" property="preQty" jdbcType="DOUBLE" />
+    <result column="complete_qty" property="completeQty" jdbcType="DOUBLE" />
+    <result column="oms_pre_qty" property="omsPreQty" jdbcType="DOUBLE" />
+    <result column="channel_client_id" property="channelClientId" jdbcType="VARCHAR" />
+    <result column="channel_client_nbr" property="channelClientNbr" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="creation_date" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="parent_workorder_id" property="parentWorkorderId" jdbcType="VARCHAR" />
+    <result column="wave_id" property="waveId" jdbcType="VARCHAR" />
+    <result column="wave_nbr" property="waveNbr" jdbcType="VARCHAR" />
+    <result column="pkt_id" property="pktId" jdbcType="VARCHAR" />
+    <result column="pkt_nbr" property="pktNbr" jdbcType="VARCHAR" />
+    <result column="picker" property="picker" jdbcType="VARCHAR" />
+    <result column="pick_start_time" property="pickStartTime" jdbcType="TIMESTAMP" />
+    <result column="pick_end_time" property="pickEndTime" jdbcType="TIMESTAMP" />
+    <result column="closer" property="closer" jdbcType="VARCHAR" />
+    <result column="close_time" property="closeTime" jdbcType="TIMESTAMP" />
+    <result column="whse_id" property="whseId" jdbcType="VARCHAR" />
+    <result column="whse_code" property="whseCode" jdbcType="VARCHAR" />
+    <result column="oms_workorder_id" property="omsWorkorderId" jdbcType="VARCHAR" />
+    <result column="oms_workorder_code" property="omsWorkorderCode" jdbcType="VARCHAR" />
+    <result column="auto_audit" property="autoAudit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    workorder_id, mem_id, mem_code, workorder_code, workorder_type, pre_qty, complete_qty, 
+    oms_pre_qty, channel_client_id, channel_client_nbr, STATUS, creation_date, last_modify_date, 
+    creator, modified_by, parent_workorder_id, wave_id, wave_nbr, pkt_id, pkt_nbr, picker, 
+    pick_start_time, pick_end_time, closer, close_time, whse_id, whse_code, oms_workorder_id, 
+    oms_workorder_code, auto_audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wms_workorder_hdr
+    where workorder_id = #{workorderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wms_workorder_hdr
+    where workorder_id = #{workorderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Order" >
+    insert into wms_workorder_hdr (workorder_id, mem_id, mem_code, 
+      workorder_code, workorder_type, pre_qty, 
+      complete_qty, oms_pre_qty, channel_client_id, 
+      channel_client_nbr, STATUS, creation_date, 
+      last_modify_date, creator, modified_by, 
+      parent_workorder_id, wave_id, wave_nbr, 
+      pkt_id, pkt_nbr, picker, 
+      pick_start_time, pick_end_time, closer, 
+      close_time, whse_id, whse_code, 
+      oms_workorder_id, oms_workorder_code, auto_audit
+      )
+    values (#{workorderId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{workorderCode,jdbcType=VARCHAR}, #{workorderType,jdbcType=INTEGER}, #{preQty,jdbcType=DOUBLE}, 
+      #{completeQty,jdbcType=DOUBLE}, #{omsPreQty,jdbcType=DOUBLE}, #{channelClientId,jdbcType=VARCHAR}, 
+      #{channelClientNbr,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR}, 
+      #{parentWorkorderId,jdbcType=VARCHAR}, #{waveId,jdbcType=VARCHAR}, #{waveNbr,jdbcType=VARCHAR}, 
+      #{pktId,jdbcType=VARCHAR}, #{pktNbr,jdbcType=VARCHAR}, #{picker,jdbcType=VARCHAR}, 
+      #{pickStartTime,jdbcType=TIMESTAMP}, #{pickEndTime,jdbcType=TIMESTAMP}, #{closer,jdbcType=VARCHAR}, 
+      #{closeTime,jdbcType=TIMESTAMP}, #{whseId,jdbcType=VARCHAR}, #{whseCode,jdbcType=VARCHAR}, 
+      #{omsWorkorderId,jdbcType=VARCHAR}, #{omsWorkorderCode,jdbcType=VARCHAR}, #{autoAudit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Order" >
+    insert into wms_workorder_hdr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workorderId != null" >
+        workorder_id,
+      </if>
+      <if test="memId != null" >
+        mem_id,
+      </if>
+      <if test="memCode != null" >
+        mem_code,
+      </if>
+      <if test="workorderCode != null" >
+        workorder_code,
+      </if>
+      <if test="workorderType != null" >
+        workorder_type,
+      </if>
+      <if test="preQty != null" >
+        pre_qty,
+      </if>
+      <if test="completeQty != null" >
+        complete_qty,
+      </if>
+      <if test="omsPreQty != null" >
+        oms_pre_qty,
+      </if>
+      <if test="channelClientId != null" >
+        channel_client_id,
+      </if>
+      <if test="channelClientNbr != null" >
+        channel_client_nbr,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="creationDate != null" >
+        creation_date,
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+      <if test="parentWorkorderId != null" >
+        parent_workorder_id,
+      </if>
+      <if test="waveId != null" >
+        wave_id,
+      </if>
+      <if test="waveNbr != null" >
+        wave_nbr,
+      </if>
+      <if test="pktId != null" >
+        pkt_id,
+      </if>
+      <if test="pktNbr != null" >
+        pkt_nbr,
+      </if>
+      <if test="picker != null" >
+        picker,
+      </if>
+      <if test="pickStartTime != null" >
+        pick_start_time,
+      </if>
+      <if test="pickEndTime != null" >
+        pick_end_time,
+      </if>
+      <if test="closer != null" >
+        closer,
+      </if>
+      <if test="closeTime != null" >
+        close_time,
+      </if>
+      <if test="whseId != null" >
+        whse_id,
+      </if>
+      <if test="whseCode != null" >
+        whse_code,
+      </if>
+      <if test="omsWorkorderId != null" >
+        oms_workorder_id,
+      </if>
+      <if test="omsWorkorderCode != null" >
+        oms_workorder_code,
+      </if>
+      <if test="autoAudit != null" >
+        auto_audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workorderId != null" >
+        #{workorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="memId != null" >
+        #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderCode != null" >
+        #{workorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderType != null" >
+        #{workorderType,jdbcType=INTEGER},
+      </if>
+      <if test="preQty != null" >
+        #{preQty,jdbcType=DOUBLE},
+      </if>
+      <if test="completeQty != null" >
+        #{completeQty,jdbcType=DOUBLE},
+      </if>
+      <if test="omsPreQty != null" >
+        #{omsPreQty,jdbcType=DOUBLE},
+      </if>
+      <if test="channelClientId != null" >
+        #{channelClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClientNbr != null" >
+        #{channelClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="parentWorkorderId != null" >
+        #{parentWorkorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="waveId != null" >
+        #{waveId,jdbcType=VARCHAR},
+      </if>
+      <if test="waveNbr != null" >
+        #{waveNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="pktId != null" >
+        #{pktId,jdbcType=VARCHAR},
+      </if>
+      <if test="pktNbr != null" >
+        #{pktNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="picker != null" >
+        #{picker,jdbcType=VARCHAR},
+      </if>
+      <if test="pickStartTime != null" >
+        #{pickStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pickEndTime != null" >
+        #{pickEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closer != null" >
+        #{closer,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null" >
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whseId != null" >
+        #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="omsWorkorderId != null" >
+        #{omsWorkorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="omsWorkorderCode != null" >
+        #{omsWorkorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAudit != null" >
+        #{autoAudit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Order" >
+    update wms_workorder_hdr
+    <set >
+      <if test="memId != null" >
+        mem_id = #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderCode != null" >
+        workorder_code = #{workorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderType != null" >
+        workorder_type = #{workorderType,jdbcType=INTEGER},
+      </if>
+      <if test="preQty != null" >
+        pre_qty = #{preQty,jdbcType=DOUBLE},
+      </if>
+      <if test="completeQty != null" >
+        complete_qty = #{completeQty,jdbcType=DOUBLE},
+      </if>
+      <if test="omsPreQty != null" >
+        oms_pre_qty = #{omsPreQty,jdbcType=DOUBLE},
+      </if>
+      <if test="channelClientId != null" >
+        channel_client_id = #{channelClientId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelClientNbr != null" >
+        channel_client_nbr = #{channelClientNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null" >
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="parentWorkorderId != null" >
+        parent_workorder_id = #{parentWorkorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="waveId != null" >
+        wave_id = #{waveId,jdbcType=VARCHAR},
+      </if>
+      <if test="waveNbr != null" >
+        wave_nbr = #{waveNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="pktId != null" >
+        pkt_id = #{pktId,jdbcType=VARCHAR},
+      </if>
+      <if test="pktNbr != null" >
+        pkt_nbr = #{pktNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="picker != null" >
+        picker = #{picker,jdbcType=VARCHAR},
+      </if>
+      <if test="pickStartTime != null" >
+        pick_start_time = #{pickStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pickEndTime != null" >
+        pick_end_time = #{pickEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closer != null" >
+        closer = #{closer,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null" >
+        close_time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whseId != null" >
+        whse_id = #{whseId,jdbcType=VARCHAR},
+      </if>
+      <if test="whseCode != null" >
+        whse_code = #{whseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="omsWorkorderId != null" >
+        oms_workorder_id = #{omsWorkorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="omsWorkorderCode != null" >
+        oms_workorder_code = #{omsWorkorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAudit != null" >
+        auto_audit = #{autoAudit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where workorder_id = #{workorderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Order" >
+    update wms_workorder_hdr
+    set mem_id = #{memId,jdbcType=VARCHAR},
+      mem_code = #{memCode,jdbcType=VARCHAR},
+      workorder_code = #{workorderCode,jdbcType=VARCHAR},
+      workorder_type = #{workorderType,jdbcType=INTEGER},
+      pre_qty = #{preQty,jdbcType=DOUBLE},
+      complete_qty = #{completeQty,jdbcType=DOUBLE},
+      oms_pre_qty = #{omsPreQty,jdbcType=DOUBLE},
+      channel_client_id = #{channelClientId,jdbcType=VARCHAR},
+      channel_client_nbr = #{channelClientNbr,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      parent_workorder_id = #{parentWorkorderId,jdbcType=VARCHAR},
+      wave_id = #{waveId,jdbcType=VARCHAR},
+      wave_nbr = #{waveNbr,jdbcType=VARCHAR},
+      pkt_id = #{pktId,jdbcType=VARCHAR},
+      pkt_nbr = #{pktNbr,jdbcType=VARCHAR},
+      picker = #{picker,jdbcType=VARCHAR},
+      pick_start_time = #{pickStartTime,jdbcType=TIMESTAMP},
+      pick_end_time = #{pickEndTime,jdbcType=TIMESTAMP},
+      closer = #{closer,jdbcType=VARCHAR},
+      close_time = #{closeTime,jdbcType=TIMESTAMP},
+      whse_id = #{whseId,jdbcType=VARCHAR},
+      whse_code = #{whseCode,jdbcType=VARCHAR},
+      oms_workorder_id = #{omsWorkorderId,jdbcType=VARCHAR},
+      oms_workorder_code = #{omsWorkorderCode,jdbcType=VARCHAR},
+      auto_audit = #{autoAudit,jdbcType=INTEGER}
+    where workorder_id = #{workorderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

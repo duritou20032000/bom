@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mr.bom.dao.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Material" >
+    <id column="workorder_dtl_id" property="workorderDtlId" jdbcType="VARCHAR" />
+    <result column="mem_id" property="memId" jdbcType="VARCHAR" />
+    <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
+    <result column="workorder_id" property="workorderId" jdbcType="VARCHAR" />
+    <result column="workorder_code" property="workorderCode" jdbcType="VARCHAR" />
+    <result column="sku_id" property="skuId" jdbcType="VARCHAR" />
+    <result column="sku_code" property="skuCode" jdbcType="VARCHAR" />
+    <result column="vdr_code" property="vdrCode" jdbcType="VARCHAR" />
+    <result column="sku_name" property="skuName" jdbcType="VARCHAR" />
+    <result column="batch_nbr" property="batchNbr" jdbcType="VARCHAR" />
+    <result column="sku_cost" property="skuCost" jdbcType="DOUBLE" />
+    <result column="workorder_sku_type" property="workorderSkuType" jdbcType="INTEGER" />
+    <result column="sku_type" property="skuType" jdbcType="INTEGER" />
+    <result column="mfg_sku_code" property="mfgSkuCode" jdbcType="VARCHAR" />
+    <result column="material_qty" property="materialQty" jdbcType="INTEGER" />
+    <result column="need_material_qty" property="needMaterialQty" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="creation_date" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="serial_nbr" property="serialNbr" jdbcType="VARCHAR" />
+    <result column="xpire_date" property="xpireDate" jdbcType="TIMESTAMP" />
+    <result column="inventory_type" property="inventoryType" jdbcType="INTEGER" />
+    <result column="oms_xpire_date" property="omsXpireDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    workorder_dtl_id, mem_id, mem_code, workorder_id, workorder_code, sku_id, sku_code, 
+    vdr_code, sku_name, batch_nbr, sku_cost, workorder_sku_type, sku_type, mfg_sku_code, 
+    material_qty, need_material_qty, STATUS, creation_date, last_modify_date, creator, 
+    modified_by, serial_nbr, xpire_date, inventory_type, oms_xpire_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wms_workorder_dtl
+    where workorder_dtl_id = #{workorderDtlId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wms_workorder_dtl
+    where workorder_dtl_id = #{workorderDtlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.Material" >
+    insert into wms_workorder_dtl (workorder_dtl_id, mem_id, mem_code, 
+      workorder_id, workorder_code, sku_id, 
+      sku_code, vdr_code, sku_name, 
+      batch_nbr, sku_cost, workorder_sku_type, 
+      sku_type, mfg_sku_code, material_qty, 
+      need_material_qty, STATUS, creation_date, 
+      last_modify_date, creator, modified_by, 
+      serial_nbr, xpire_date, inventory_type, 
+      oms_xpire_date)
+    values (#{workorderDtlId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{workorderId,jdbcType=VARCHAR}, #{workorderCode,jdbcType=VARCHAR}, #{skuId,jdbcType=VARCHAR}, 
+      #{skuCode,jdbcType=VARCHAR}, #{vdrCode,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{batchNbr,jdbcType=VARCHAR}, #{skuCost,jdbcType=DOUBLE}, #{workorderSkuType,jdbcType=INTEGER}, 
+      #{skuType,jdbcType=INTEGER}, #{mfgSkuCode,jdbcType=VARCHAR}, #{materialQty,jdbcType=INTEGER}, 
+      #{needMaterialQty,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR}, 
+      #{serialNbr,jdbcType=VARCHAR}, #{xpireDate,jdbcType=TIMESTAMP}, #{inventoryType,jdbcType=INTEGER}, 
+      #{omsXpireDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Material" >
+    insert into wms_workorder_dtl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workorderDtlId != null" >
+        workorder_dtl_id,
+      </if>
+      <if test="memId != null" >
+        mem_id,
+      </if>
+      <if test="memCode != null" >
+        mem_code,
+      </if>
+      <if test="workorderId != null" >
+        workorder_id,
+      </if>
+      <if test="workorderCode != null" >
+        workorder_code,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="skuCode != null" >
+        sku_code,
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code,
+      </if>
+      <if test="skuName != null" >
+        sku_name,
+      </if>
+      <if test="batchNbr != null" >
+        batch_nbr,
+      </if>
+      <if test="skuCost != null" >
+        sku_cost,
+      </if>
+      <if test="workorderSkuType != null" >
+        workorder_sku_type,
+      </if>
+      <if test="skuType != null" >
+        sku_type,
+      </if>
+      <if test="mfgSkuCode != null" >
+        mfg_sku_code,
+      </if>
+      <if test="materialQty != null" >
+        material_qty,
+      </if>
+      <if test="needMaterialQty != null" >
+        need_material_qty,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="creationDate != null" >
+        creation_date,
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+      <if test="serialNbr != null" >
+        serial_nbr,
+      </if>
+      <if test="xpireDate != null" >
+        xpire_date,
+      </if>
+      <if test="inventoryType != null" >
+        inventory_type,
+      </if>
+      <if test="omsXpireDate != null" >
+        oms_xpire_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workorderDtlId != null" >
+        #{workorderDtlId,jdbcType=VARCHAR},
+      </if>
+      <if test="memId != null" >
+        #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderId != null" >
+        #{workorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderCode != null" >
+        #{workorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null" >
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNbr != null" >
+        #{batchNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCost != null" >
+        #{skuCost,jdbcType=DOUBLE},
+      </if>
+      <if test="workorderSkuType != null" >
+        #{workorderSkuType,jdbcType=INTEGER},
+      </if>
+      <if test="skuType != null" >
+        #{skuType,jdbcType=INTEGER},
+      </if>
+      <if test="mfgSkuCode != null" >
+        #{mfgSkuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialQty != null" >
+        #{materialQty,jdbcType=INTEGER},
+      </if>
+      <if test="needMaterialQty != null" >
+        #{needMaterialQty,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNbr != null" >
+        #{serialNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xpireDate != null" >
+        #{xpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inventoryType != null" >
+        #{inventoryType,jdbcType=INTEGER},
+      </if>
+      <if test="omsXpireDate != null" >
+        #{omsXpireDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Material" >
+    update wms_workorder_dtl
+    <set >
+      <if test="memId != null" >
+        mem_id = #{memId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null" >
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderId != null" >
+        workorder_id = #{workorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="workorderCode != null" >
+        workorder_code = #{workorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null" >
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vdrCode != null" >
+        vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNbr != null" >
+        batch_nbr = #{batchNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCost != null" >
+        sku_cost = #{skuCost,jdbcType=DOUBLE},
+      </if>
+      <if test="workorderSkuType != null" >
+        workorder_sku_type = #{workorderSkuType,jdbcType=INTEGER},
+      </if>
+      <if test="skuType != null" >
+        sku_type = #{skuType,jdbcType=INTEGER},
+      </if>
+      <if test="mfgSkuCode != null" >
+        mfg_sku_code = #{mfgSkuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialQty != null" >
+        material_qty = #{materialQty,jdbcType=INTEGER},
+      </if>
+      <if test="needMaterialQty != null" >
+        need_material_qty = #{needMaterialQty,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null" >
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNbr != null" >
+        serial_nbr = #{serialNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xpireDate != null" >
+        xpire_date = #{xpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inventoryType != null" >
+        inventory_type = #{inventoryType,jdbcType=INTEGER},
+      </if>
+      <if test="omsXpireDate != null" >
+        oms_xpire_date = #{omsXpireDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where workorder_dtl_id = #{workorderDtlId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Material" >
+    update wms_workorder_dtl
+    set mem_id = #{memId,jdbcType=VARCHAR},
+      mem_code = #{memCode,jdbcType=VARCHAR},
+      workorder_id = #{workorderId,jdbcType=VARCHAR},
+      workorder_code = #{workorderCode,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=VARCHAR},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      vdr_code = #{vdrCode,jdbcType=VARCHAR},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      batch_nbr = #{batchNbr,jdbcType=VARCHAR},
+      sku_cost = #{skuCost,jdbcType=DOUBLE},
+      workorder_sku_type = #{workorderSkuType,jdbcType=INTEGER},
+      sku_type = #{skuType,jdbcType=INTEGER},
+      mfg_sku_code = #{mfgSkuCode,jdbcType=VARCHAR},
+      material_qty = #{materialQty,jdbcType=INTEGER},
+      need_material_qty = #{needMaterialQty,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      serial_nbr = #{serialNbr,jdbcType=VARCHAR},
+      xpire_date = #{xpireDate,jdbcType=TIMESTAMP},
+      inventory_type = #{inventoryType,jdbcType=INTEGER},
+      oms_xpire_date = #{omsXpireDate,jdbcType=TIMESTAMP}
+    where workorder_dtl_id = #{workorderDtlId,jdbcType=VARCHAR}
+  </update>
+</mapper>
