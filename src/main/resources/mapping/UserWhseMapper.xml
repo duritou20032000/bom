@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mr.bom.dao.UserWhseMapper" >
+<mapper namespace="com.mr.bom.dao.mapper.UserWhseMapper" >
   <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.UserWhse" >
     <id column="user_whse_id" property="userWhseId" jdbcType="VARCHAR" />
     <result column="mem_id" property="memId" jdbcType="VARCHAR" />

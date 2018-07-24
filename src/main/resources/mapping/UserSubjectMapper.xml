@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mr.bom.dao.mapper.SubjectMapper" >
-  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Subject" >
-    <id column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+<mapper namespace="com.mr.bom.dao.mapper.UserSubjectMapper" >
+  <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.UserSubject" >
+    <id column="USER_SUBJECT_ID" property="userSubjectId" jdbcType="VARCHAR" />
     <result column="mem_id" property="memId" jdbcType="VARCHAR" />
     <result column="mem_code" property="memCode" jdbcType="VARCHAR" />
-    <result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
-    <result column="SUBJECT_DESC" property="subjectDesc" jdbcType="VARCHAR" />
-    <result column="SUBJECT_TYPE" property="subjectType" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+    <result column="COMMENT" property="comment" jdbcType="VARCHAR" />
     <result column="CREATION_DATE" property="creationDate" jdbcType="TIMESTAMP" />
     <result column="LAST_MODIFY_DATE" property="lastModifyDate" jdbcType="TIMESTAMP" />
     <result column="creator" property="creator" jdbcType="VARCHAR" />
     <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="subject_group_id" property="subjectGroupId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    SUBJECT_ID, mem_id, mem_code, SUBJECT_NAME, SUBJECT_DESC, SUBJECT_TYPE, CREATION_DATE, 
-    LAST_MODIFY_DATE, creator, modified_by, status, subject_group_id
+    USER_SUBJECT_ID, mem_id, mem_code, USER_ID, SUBJECT_ID, COMMENT, CREATION_DATE, LAST_MODIFY_DATE, 
+    creator, modified_by, status
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from bm_subject
-    where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+    from bm_user_subject
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from bm_user_subject
+    where USER_SUBJECT_ID = #{userSubjectId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from bm_subject
-    where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+    delete from bm_user_subject
+    where USER_SUBJECT_ID = #{userSubjectId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.mr.bom.dao.domain.Subject" >
-    insert into bm_subject (SUBJECT_ID, mem_id, mem_code, 
-      SUBJECT_NAME, SUBJECT_DESC, SUBJECT_TYPE, 
+  <insert id="insert" parameterType="com.mr.bom.dao.domain.UserSubject" >
+    insert into bm_user_subject (USER_SUBJECT_ID, mem_id, mem_code, 
+      USER_ID, SUBJECT_ID, COMMENT, 
       CREATION_DATE, LAST_MODIFY_DATE, creator, 
-      modified_by, status, subject_group_id
-      )
-    values (#{subjectId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
-      #{subjectName,jdbcType=VARCHAR}, #{subjectDesc,jdbcType=VARCHAR}, #{subjectType,jdbcType=INTEGER}, 
+      modified_by, status)
+    values (#{userSubjectId,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR}, #{memCode,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{subjectId,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
       #{creationDate,jdbcType=TIMESTAMP}, #{lastModifyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
-      #{modifiedBy,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{subjectGroupId,jdbcType=VARCHAR}
-      )
+      #{modifiedBy,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.Subject" >
-    insert into bm_subject
+  <insert id="insertSelective" parameterType="com.mr.bom.dao.domain.UserSubject" >
+    insert into bm_user_subject
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="subjectId != null" >
-        SUBJECT_ID,
+      <if test="userSubjectId != null" >
+        USER_SUBJECT_ID,
       </if>
       <if test="memId != null" >
         mem_id,
@@ -53,14 +56,14 @@
       <if test="memCode != null" >
         mem_code,
       </if>
-      <if test="subjectName != null" >
-        SUBJECT_NAME,
+      <if test="userId != null" >
+        USER_ID,
       </if>
-      <if test="subjectDesc != null" >
-        SUBJECT_DESC,
+      <if test="subjectId != null" >
+        SUBJECT_ID,
       </if>
-      <if test="subjectType != null" >
-        SUBJECT_TYPE,
+      <if test="comment != null" >
+        COMMENT,
       </if>
       <if test="creationDate != null" >
         CREATION_DATE,
@@ -77,13 +80,10 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="subjectGroupId != null" >
-        subject_group_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="subjectId != null" >
-        #{subjectId,jdbcType=VARCHAR},
+      <if test="userSubjectId != null" >
+        #{userSubjectId,jdbcType=VARCHAR},
       </if>
       <if test="memId != null" >
         #{memId,jdbcType=VARCHAR},
@@ -91,14 +91,14 @@
       <if test="memCode != null" >
         #{memCode,jdbcType=VARCHAR},
       </if>
-      <if test="subjectName != null" >
-        #{subjectName,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="subjectDesc != null" >
-        #{subjectDesc,jdbcType=VARCHAR},
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=VARCHAR},
       </if>
-      <if test="subjectType != null" >
-        #{subjectType,jdbcType=INTEGER},
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
       </if>
       <if test="creationDate != null" >
         #{creationDate,jdbcType=TIMESTAMP},
@@ -115,13 +115,10 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="subjectGroupId != null" >
-        #{subjectGroupId,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.Subject" >
-    update bm_subject
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.bom.dao.domain.UserSubject" >
+    update bm_user_subject
     <set >
       <if test="memId != null" >
         mem_id = #{memId,jdbcType=VARCHAR},
@@ -129,14 +126,14 @@
       <if test="memCode != null" >
         mem_code = #{memCode,jdbcType=VARCHAR},
       </if>
-      <if test="subjectName != null" >
-        SUBJECT_NAME = #{subjectName,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="subjectDesc != null" >
-        SUBJECT_DESC = #{subjectDesc,jdbcType=VARCHAR},
+      <if test="subjectId != null" >
+        SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
       </if>
-      <if test="subjectType != null" >
-        SUBJECT_TYPE = #{subjectType,jdbcType=INTEGER},
+      <if test="comment != null" >
+        COMMENT = #{comment,jdbcType=VARCHAR},
       </if>
       <if test="creationDate != null" >
         CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
@@ -153,25 +150,21 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="subjectGroupId != null" >
-        subject_group_id = #{subjectGroupId,jdbcType=VARCHAR},
-      </if>
     </set>
-    where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+    where USER_SUBJECT_ID = #{userSubjectId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.Subject" >
-    update bm_subject
+  <update id="updateByPrimaryKey" parameterType="com.mr.bom.dao.domain.UserSubject" >
+    update bm_user_subject
     set mem_id = #{memId,jdbcType=VARCHAR},
       mem_code = #{memCode,jdbcType=VARCHAR},
-      SUBJECT_NAME = #{subjectName,jdbcType=VARCHAR},
-      SUBJECT_DESC = #{subjectDesc,jdbcType=VARCHAR},
-      SUBJECT_TYPE = #{subjectType,jdbcType=INTEGER},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
+      COMMENT = #{comment,jdbcType=VARCHAR},
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=VARCHAR},
       modified_by = #{modifiedBy,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      subject_group_id = #{subjectGroupId,jdbcType=VARCHAR}
-    where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+      status = #{status,jdbcType=INTEGER}
+    where USER_SUBJECT_ID = #{userSubjectId,jdbcType=VARCHAR}
   </update>
 </mapper>

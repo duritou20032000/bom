@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mr.bom.dao.MaterialMapper" >
+<mapper namespace="com.mr.bom.dao.mapper.MaterialMapper" >
   <resultMap id="BaseResultMap" type="com.mr.bom.dao.domain.Material" >
     <id column="workorder_dtl_id" property="workorderDtlId" jdbcType="VARCHAR" />
     <result column="mem_id" property="memId" jdbcType="VARCHAR" />
